@@ -1,11 +1,16 @@
 {
-  "name": "vuedemo",
+  "name": "vue-learn-demo",
   "version": "0.1.0",
-  "private": true,
+  "description": "学习组件开发",
+  "main": "lib/base-main.umd.min.js",
+  "private": false,
+  "license": "MIT",
+  "author": "erpang",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --name base-main --dest lib packages/index.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
