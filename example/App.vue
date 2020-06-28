@@ -3,7 +3,8 @@
     <!-- <div class="header"></div> -->
     <div class="main">
       <div class="sidebar">
-        <router-link to="test">Button 按钮</router-link>
+        <!-- <router-link to="ElButton">Button 按钮</router-link> -->
+        <router-link v-for="(item, i) in routes" :key="i" :to="item.path">{{item.name}}</router-link>
       </div>
       <div class="view" id="ex-r-area">
         <router-view></router-view>
@@ -11,14 +12,26 @@
     </div>
     <!-- <div class="footer"></div> -->
   </div>
-  <!-- <div id="app">
-    <base-main></base-main>
-  </div> -->
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      routes: []
+    }
+  },
+  created () {
+    let routers = this.$router.options.routes
+    this.routes = routers.map(el => {
+      return {
+        path: el.path,
+        name: el.text || el.name || el.path
+      }
+    })
+    console.log(routers)
+  }
 }
 </script>
 
@@ -57,15 +70,23 @@ body {
   width: 200px;
   border-right: 1px solid #e4e4e4;
   >a{
-    height: 40px;
-    line-height: 40px;
     padding-left: 10px;
     display: block;
-    color: #000;
+    height: 40px;
+    color: #444;
+    line-height: 40px;
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 400;
     text-decoration: none;
     &:hover{
       color: #409eff;
     }
+  }
+  .router-link-active{
+    color: #409eff;
   }
 }
 .view {
