@@ -6,7 +6,7 @@ const resolve = function (dir) {
 }
 
 module.exports = {
-  outputDir: 'lib',
+  outputDir: 'dist',
   publicPath: './',
   pages: {
     index: {

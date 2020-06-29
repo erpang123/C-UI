@@ -4,9 +4,11 @@
       <span class="city-val">{{cityVal}}</span>
       <!-- <input type="text" v-model="cityVal"/> -->
     </div>
-    <div class="city-lists" :class="{'ani-demo': cityBool}" v-show="cityBool">
+    <div @click.stop="" class="city-lists" :class="{'ani-demo': cityBool}">
       <div class="city-list" v-for="(item, i) in lists" :key="i">
-        <div :class="{'active': cI === checkIndex[i]}" @click="clickList(citem, cI, i)" class="li-list" v-for="(citem, cI) in item" :key="cI">{{citem}}</div>
+        <div :class="{'active': cI === checkIndex[i]}" @click="clickList(citem, cI, i)" class="li-list" v-for="(citem, cI) in item" :key="cI">
+          <div class="radio"></div>{{citem}}
+        </div>
       </div>
     </div>
   </div>
@@ -26,7 +28,7 @@ export default {
   },
   data () {
     return {
-      cityVal: '',
+      cityVal: '请选择',
       cityArr: [],
       checkIndex: [],
       cIndex: ['0'],
@@ -115,8 +117,10 @@ export default {
   background: #fff;
   outline: none;
   height: 0;
-  transition: height 0.3s;
+  opacity: 0;
+  transition: all 0.3s;
   &.ani-demo{
+    opacity: 1;
     height: 200px;
   }
 }
@@ -135,12 +139,36 @@ export default {
   cursor: pointer;
   padding: 0 10px;
   font-size: 14px;
+  display: flex;
+  align-items: center;
   &:hover{
     background: #f5f7fa;
   }
   &.active{
     color: #409eff;
-    font-weight: 700;
+    .radio{
+      background: #409eff;
+      border-color: #409eff;
+      position: relative;
+      &::after{
+        content: '';
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #fff;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+  .radio{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid #dcdfe6;
+    margin-right: 4px;
   }
 }
 .city-val{
