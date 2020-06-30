@@ -8,7 +8,7 @@
   "author": "erpang",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --dest CUI",
+    "build": "vue-cli-service build --dest CUI --report",
     "lint": "vue-cli-service lint",
     "lib": "vue-cli-service build --target lib --name base-main --dest lib packages/index.js"
   },

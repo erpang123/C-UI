@@ -3,10 +3,11 @@ import App from './App.vue'
 import router from './router'
 import CUI from './../packages/index'
 import DemoBlock from './components/demoBlock'
-import('highlight.js/styles/default.css')
-import hljs from 'highlight.js'
+// import('highlight.js/styles/default.css')
+// import hljs from 'highlight.js'
 Vue.use(CUI)
 Vue.component('demo-block', DemoBlock)
+var hljs = window.hljs
 
 Vue.config.productionTip = false
 
